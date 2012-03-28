@@ -1,3 +1,4 @@
 - redesign so that quizzes can be added without recompile
 - add tests
+- write a maven build script with test coverage and shit !
 - build a friendlier executable
