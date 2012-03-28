@@ -49,7 +49,6 @@ public class MonthsOfTheYear implements Quizz {
 
 	@Override
 	public String getAnswer() {
-		// TODO Auto-generated method stub
 		return this.answer;
 	}
 }

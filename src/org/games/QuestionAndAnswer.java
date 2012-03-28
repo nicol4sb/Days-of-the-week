@@ -1,8 +1,6 @@
 package org.games;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -17,14 +15,7 @@ public class QuestionAndAnswer {
 	private static final String BRAVO = "BRAVO";
 	private static final String TRY_AGAIN = "TRY_AGAIN";
 	private static final String NOPE = "NOPE";
-	private static final String WHAT_GAME = "WHAT_GAME";
-	private static final String GAME_TYPE_DAYS = "GAME_TYPE_DAYS";
-	private static final String GAME_TYPE_MONTHS = "GAME_TYPE_MONTHS";
 	private static final String DO_YOU_WANT_TO_GO_ON_1_YES_2_NO = "DO_YOU_WANT_TO_GO_ON_1_YES_2_NO";
-	private static final String PLEASE_SELECT_AMONG_CHOICES = "PLEASE_SELECT_AMONG_CHOICES";
-
-	static BufferedReader br = new BufferedReader(new InputStreamReader(
-			System.in));
 
 	public static void main(String[] args) throws IOException {
 
@@ -38,7 +29,7 @@ public class QuestionAndAnswer {
 			System.out.println("1. English");
 			System.out.println("2. French");
 
-			int choice = safeReadIntegerFromKeyBoardInput();
+			int choice = IOUtils.safeReadIntegerFromKeyBoardInput(messages);
 
 			if (choice == -1) {
 				continue;
@@ -60,14 +51,14 @@ public class QuestionAndAnswer {
 		int score = 0;
 		int numberOfQuestionsAsked = 0;
 		int maxQuestions = 3;
-		int numberOfTimesQuestionIsRepeatedInCaseOfFailure = 3;
+		int numberOfTimesQuestionIsRepeatedInCaseOfFailure = 4;
 
 		// ask the questions until game's end
 		while (true) {
 
 			// choose the type of game
 			if (numberOfQuestionsAsked == 0) {
-				quizzType = readQuizzTypeFromKeyBoard();
+				quizzType = IOUtils.readQuizzTypeFromKeyBoard(messages);
 			}
 
 			// check if game should be terminated
@@ -80,13 +71,14 @@ public class QuestionAndAnswer {
 					System.out.println(messages
 							.getString(DO_YOU_WANT_TO_GO_ON_1_YES_2_NO));
 
-					int answer = safeReadIntegerFromKeyBoardInput();
+					int answer = IOUtils
+							.safeReadIntegerFromKeyBoardInput(messages);
 
 					if (answer == -1) {
 						continue;
 					}
 					if (answer == 1) {
-						quizzType = readQuizzTypeFromKeyBoard();
+						quizzType = IOUtils.readQuizzTypeFromKeyBoard(messages);
 						break;
 					}
 					if (answer == 2) {
@@ -113,7 +105,7 @@ public class QuestionAndAnswer {
 				System.out.println(quizz.getQuestion());
 				numberOfQuestionsAsked++;
 
-				String answerGiven = br.readLine();
+				String answerGiven = IOUtils.getAnswerFromKeyBoard();
 
 				if (answerGiven.equalsIgnoreCase(quizz.getAnswer())) {
 					System.out.println(messages.getString(BRAVO));
@@ -130,48 +122,8 @@ public class QuestionAndAnswer {
 
 	}
 
-	private static String readQuizzTypeFromKeyBoard() {
-		String quizzType = "";
-		while (true) {
-			System.out.println(messages.getString(WHAT_GAME));
-			System.out.println("1. " + messages.getString(GAME_TYPE_DAYS));
-			System.out.println("2. " + messages.getString(GAME_TYPE_MONTHS));
-
-			int choice = safeReadIntegerFromKeyBoardInput();
-
-			if (choice == -1) {
-				continue;
-			}
-			if (choice == 1) {
-				quizzType = QuizzFactory.DAYS_OF_THE_WEEK;
-				break;
-			}
-			if (choice == 2) {
-				quizzType = QuizzFactory.MONTHS_OF_THE_YEAR;
-				break;
-			}
-		}
-		return quizzType;
-	}
-
 	private static void loadMessages() {
 		messages = ResourceBundle.getBundle("MessagesBundle",
 				Locale.getDefault());
-	}
-
-	private static int safeReadIntegerFromKeyBoardInput() {
-
-		int answer = -1;
-		try {
-			String line = br.readLine();
-			if (line != null) {
-				answer = Integer.parseInt(line);
-			}
-		} catch (NumberFormatException e) {
-			System.out.println(messages.getString(PLEASE_SELECT_AMONG_CHOICES));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return answer;
 	}
 }
