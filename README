@@ -3,7 +3,9 @@ Original version was running on an Osborne computer (these were the days).
 
 This version features for now a raw command line interface, 2 languages (French and English) and in addition to the days of the week, the months of the year, for good measure !
 
-How it looks :
+----------------------------------
+What does it look like?
+----------------------------------
 
 MacBook$> java -jar DaysOfTheWeek.jar 
 Choose your language
@@ -18,3 +20,13 @@ What month comes before October
 September
 Bravo !
 What month comes before July
+
+----------------------------------
+How do i run it?
+----------------------------------
+
+Download the executable jar file
+https://github.com/nicobeez/Days-of-the-week/blob/master/DaysOfTheWeek.jar
+
+open a command line / terminal and run it :
+java -jar DaysOfTheWeek.jar
