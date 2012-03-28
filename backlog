@@ -1,0 +1,3 @@
+- redesign so that quizzes can be added without recompile
+- add tests
+- build a friendlier executable
