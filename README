@@ -1,0 +1,4 @@
+Long story short, this is a rewrite in Java of a software written in 1985 by my beloved dad to teach me the days of the week.
+Original version was running on an Osborne computer (these were the days).
+
+This version features for now a raw command line interface, 2 languages (French and English) and in addition to the days of the week, the months of the year, for good measure !
