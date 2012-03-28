@@ -1,0 +1,5 @@
+MacBook:DaysOfTheWeek nick$ git add .
+MacBook:DaysOfTheWeek nick$ git commit -m "my comment blablabla"
+[master d7b83fe] Additions in the README file on execution instructions
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+MacBook:DaysOfTheWeek nick$ git push git@github.com:nicobeez/Days-of-the-week.git master
