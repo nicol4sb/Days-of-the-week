@@ -28,6 +28,7 @@ public class QuestionAndAnswer {
 			System.out.println("Choose your language");
 			System.out.println("1. English");
 			System.out.println("2. French");
+			System.out.println("3. German");
 
 			int choice = IOUtils.safeReadIntegerFromKeyBoardInput(messages);
 
@@ -42,6 +43,10 @@ public class QuestionAndAnswer {
 				selectedLocale = Locale.FRENCH;
 				break;
 			}
+			if (choice == 3) {
+				selectedLocale = Locale.GERMAN;
+				break;
+			}
 		}
 
 		Locale.setDefault(selectedLocale);
@@ -50,7 +55,7 @@ public class QuestionAndAnswer {
 
 		int score = 0;
 		int numberOfQuestionsAsked = 0;
-		int maxQuestions = 3;
+		int maxQuestions = 6;
 		int numberOfTimesQuestionIsRepeatedInCaseOfFailure = 4;
 
 		// ask the questions until game's end
