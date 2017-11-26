@@ -13,6 +13,7 @@ public class IOUtils {
 	private static final String WHAT_GAME = "WHAT_GAME";
 	private static final String GAME_TYPE_DAYS = "GAME_TYPE_DAYS";
 	private static final String GAME_TYPE_MONTHS = "GAME_TYPE_MONTHS";
+	private static final String CAPITAL_OF_THE_WORLD = "CAPITAL_OF_THE_WORLD";
 
 	private static BufferedReader br = new BufferedReader(
 			new InputStreamReader(System.in));
@@ -48,6 +49,7 @@ public class IOUtils {
 			System.out.println(messages.getString(WHAT_GAME));
 			System.out.println("1. " + messages.getString(GAME_TYPE_DAYS));
 			System.out.println("2. " + messages.getString(GAME_TYPE_MONTHS));
+			System.out.println("3. " + messages.getString(CAPITAL_OF_THE_WORLD));
 
 			int choice = IOUtils.safeReadIntegerFromKeyBoardInput(messages);
 
@@ -60,6 +62,9 @@ public class IOUtils {
 			}
 			if (choice == 2) {
 				quizzType = QuizzFactory.MONTHS_OF_THE_YEAR;
+				break;
+			}if (choice == 3) {
+				quizzType = QuizzFactory.CAPITAL_OF_THE_WORLD;
 				break;
 			}
 		}

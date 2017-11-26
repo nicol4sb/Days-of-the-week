@@ -22,7 +22,7 @@ public class QuestionAndAnswer {
 		// game language selection
 		Locale selectedLocale = Locale.FRENCH;
 		String quizzType = QuizzFactory.DAYS_OF_THE_WEEK; // default
-		loadMessages();
+		loadGamesMessagesForCurrentLocale();
 
 		while (true) {
 			System.out.println("Choose your language");
@@ -51,7 +51,7 @@ public class QuestionAndAnswer {
 
 		Locale.setDefault(selectedLocale);
 
-		loadMessages();
+		loadGamesMessagesForCurrentLocale();
 
 		int score = 0;
 		int numberOfQuestionsAsked = 0;
@@ -127,7 +127,7 @@ public class QuestionAndAnswer {
 
 	}
 
-	private static void loadMessages() {
+	private static void loadGamesMessagesForCurrentLocale() {
 		messages = ResourceBundle.getBundle("MessagesBundle",
 				Locale.getDefault());
 	}
